@@ -1,1 +1,29 @@
-<p>heroes-manage works!</p>
+<!--<code>{{ this.userList | json}}</code> -->
+
+<table class=" table table-striped">
+    <thead>
+        <tr>
+            
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Activo</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @for (user of this.userList; track user.id) {
+
+        <tr>
+            <th>{{user.id}}</th>
+            <th>{{user.name}}</th>
+            <th>{{user.email}}</th>
+            <th>{{user.active}}</th>
+        </tr>
+
+
+        }
+       
+    </tbody>
+</table>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../models/heroe.model';
+import { HeroService } from '../../../services/hero.service';
 
 @Component({
   selector: 'app-heroes-list',
@@ -7,35 +8,21 @@ import { Hero } from '../../../models/heroe.model';
   templateUrl: './heroes-list.html',
   styleUrl: './heroes-list.css',
 })
-export class HeroesList {
-  heroes : Hero[] = [
-    {
-      id: 1,
-      name: 'Spiderman',
-      alterEgo: 'Peter Parker',
-      power: 80,
-      active: true,
-      imageUrl: 'img/avatars/spiderman.svg',
-      universe: 'Marvel'
-    },
-    {
-      id: 2,
-      name: 'Batman',
-      alterEgo: 'Bruce Wayne',
-      power: 50,
-      active: true,
-      imageUrl: 'img/avatars/batman.svg',
-      universe: 'DC'
-    },
-    {
-      id: 3,
-      name: 'Hulk',
-      alterEgo: 'Bruce Banner',
-      power: 150,
-      active: false,   
-      imageUrl: 'img/avatars/hulk.svg',
-      universe: 'Marvel'
-    }
-  ];
+export class HeroesList implements OnInit {
+  public heroes : Hero[] = [];
+
+  constructor( private heroService: HeroService){
+    console.log("Estamos en el constructor");
+  }
+
+  ngOnInit(): void {
+    console.log("Estamos en el ngOnInit");
+    this.heroService.getHeroes().subscribe((datos) => {
+
+      console.log("Llegaron los datos: " , datos);
+      this.heroes = datos;
+    });
+    console.log("Terminamos el ngOnInit");
+  }
 
 }
