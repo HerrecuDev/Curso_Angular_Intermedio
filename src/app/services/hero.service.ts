@@ -31,4 +31,8 @@ export class HeroService {
     return this.http.get<Hero>(`${this.apiUrl}/heroes/${id}`);
    
   }
+
+  public deleteById(id: number){
+    
+  }
 }

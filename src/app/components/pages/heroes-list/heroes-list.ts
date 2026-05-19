@@ -25,4 +25,17 @@ export class HeroesList implements OnInit {
     console.log("Terminamos el ngOnInit");
   }
 
+  deleteById(id:number){
+    this.heroService.deleteById(id).subscribe({
+      next:() => {
+        console.log("Objeto eliminado");
+      },
+      error: () => {
+
+        console.error("Ha habido un error al borrar al heroe con id" , id)
+
+      }
+    })
+  }
+
 }
