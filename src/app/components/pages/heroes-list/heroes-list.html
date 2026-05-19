@@ -1,0 +1,41 @@
+<!-- heroes-list.html -->
+
+@for (hero of heroes; track hero.id) {
+
+<div class="card mb-3 shadow-sm" style="max-width: 500px;">
+
+  <div class="card-header text-bg-dark">
+    ID: {{ hero.id }}
+  </div>
+
+  <div class="card-body d-flex align-items-center">
+
+    <img [src]="hero.imageUrl" [alt]="hero.name" [title]="hero.name" width="60" class="me-3">
+
+    <div class="flex-grow-1">
+
+      <h5 class="card-title mb-1">
+        {{ hero.name }} / {{hero.alterEgo}}
+      </h5>
+
+      <p class="card-text mb-1 text-muted">
+        {{ hero.universe }}
+      </p>
+
+      <p class="card-text mb-2">
+        Poder: {{ hero.power }}
+      </p>
+
+      @if (hero.active) {
+      <span class="badge bg-success">Activo</span>
+      } @else {
+      <span class="badge bg-secondary">Inactivo</span>
+      }
+
+    </div>
+
+  </div>
+
+</div>
+
+}
